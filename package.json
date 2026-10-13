@@ -1,0 +1,27 @@
+{
+  "name": "pulsegrid-pc-monitor",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "server",
+    "dashboard"
+  ],
+  "scripts": {
+    "postinstall": "node tools/start-java-rmi.mjs",
+    "dev": "concurrently -n API,WEB -c cyan,magenta \"npm run dev -w server\" \"npm run dev -w dashboard\"",
+    "demo": "concurrently -n API,WEB,DEMO -c cyan,magenta,green \"npm run dev -w server\" \"npm run dev -w dashboard\" \"node tools/simulator.mjs\"",
+    "build": "npm run build -w dashboard && npm run build -w server",
+    "start": "npm run start -w server",
+    "test": "npm run test -w server && npm run test -w dashboard",
+    "java-rmi:start": "node tools/start-java-rmi.mjs",
+    "agent:run": "./mvnw -q -f agent-java/pom.xml package && java -jar agent-java/target/pulsegrid-agent.jar"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "dotenv": "^16.4.7"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
+

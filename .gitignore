@@ -1,0 +1,14 @@
+node_modules/
+dist/
+target/
+.mvn/apache-maven-*/
+.env
+.idea/
+.vscode/
+*.iml
+*.log
+*.tsbuildinfo
+.java-rmi.pid
+.DS_Store
+
+
